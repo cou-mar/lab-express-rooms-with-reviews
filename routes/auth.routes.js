@@ -39,7 +39,7 @@ router.post('/signup', (req, res, next) => {
                 })
                 //direct them to login page once values inputted
                 .then(() => {
-                    res.render('/auth/login')
+                    res.redirect('/auth/login')
                 })
                 .catch((err) => {
                     console.log(err)
@@ -80,7 +80,7 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res, next) => {
     //this will clear the cookie from the DB and end the session
     req.session.destroy()
-    res.render('/auth-views/login', {message: "You have successfully logged out"})
+    res.render('auth-views/login', {message: "You have successfully logged out"})
 })
 
 module.exports = router

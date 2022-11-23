@@ -1,0 +1,30 @@
+{{#if message}}
+    <h3>{{message}}</h3>
+{{/if}}
+
+{{#each foundRooms}}
+    <h2>{{name}}</h2>
+    <p>{{description}}</p>
+    <img src="{{imageUrl}}" alt="room image">
+
+    {{!-- array of reviews --}}
+    {{#each reviews}}
+        <h4>{{user.email}}</h4>
+        <p>- &nbsp; {{comment}}</p>
+        <br>
+    {{/each}}
+
+    <form action="/reviews/{{_id}}/add-review" method="get">
+
+        <button>Add Review</button>
+    </form>
+
+    <form action="/rooms/{{_id}}/edit-room" method="get">
+        <button type="submit">Edit</button>
+    </form>
+
+    <form action="/rooms/{{_id}}/delete-room" method="post">
+        <button type="submit">Delete</button>
+    </form>
+
+{{/each}}
